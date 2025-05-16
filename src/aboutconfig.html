@@ -1,0 +1,72 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<!doctype html>
+<html>
+    <head>
+        <script src='../firefox-internal-env.js'></script>
+        <script src='../firefox-dom.js'></script>
+        <script src='./ChromeUtils.js'></script>
+        <script>onerror=(a,b,c,d,e)=>alert(e?e.stack||e:a);</script>
+        <meta charset="utf-8" />
+        <meta name="color-scheme" content="light dark" />
+        <link rel="stylesheet" media="screen, projection" type="text/css"
+            href="./global-shared.css" />
+        <link rel="stylesheet" media="screen, projection" type="text/css"
+            href="./text-and-typograph.css" />
+        <link rel="stylesheet" media="screen, projection" type="text/css"
+            href="./tokens-brand.css" />
+        <link rel="stylesheet" media="screen, projection" type="text/css"
+            href="./common.css" />
+        <link rel="stylesheet" media="screen, projection" type="text/css"
+            href="./common-shared.css" />
+        <link rel="stylesheet" media="screen, projection" type="text/css"
+            href="chrome://global/skin/in-content/info-pages.css" title="infop" />
+        <link rel="stylesheet" type="text/css" href="./aboutconfig.css" />
+        <script src="./aboutconfig.js"></script>
+        <title data-l10n-id="about-config-page-title">Advanced Preferences</title>
+    </head>
+    <body>
+        <div class="container" role="alertdialog" aria-labelledby="warningTitle" aria-describedby="warningDescription">
+            <div class="title">
+                <h1 id="warningTitle" class="title-text">Proceed with Caution</h1>
+            </div>
+
+            <div class="description">
+                <p id="warningDescription" data-l10n-id="about-config-intro-warning-text">
+                    Changing advanced configuration preferences can impact WWW Interpreter performance or security.
+                </p>
+            </div>
+
+            <div class="toggle-container-with-text">
+                <input placeholder="Search preference name" type="checkbox" id="showWarningNextTime" checked />
+                <label for="showWarningNextTime" data-l10n-id="about-config-intro-warning-checkbox">Warn me when I attempt to access these preferences</label>
+            </div>
+
+            <div class="button-container">
+                <button id="warningButton" class="primary" data-l10n-id="about-config-intro-warning-button">Accept the Risk and Continue</button>
+            </div>
+        </div>
+
+        <template id="main">
+            <div id="toolbar">
+                <!-- Use a unique ID to prevent showing autocomplete results from other
+                browser pages with similarly named fields. -->
+                <input type="text" id="about-config-search" data-l10n-id="about-config-search-input1" />
+                <label class="checkbox-container">
+                    <input type="checkbox" id="about-config-show-only-modified" />
+                    <span data-l10n-id="about-config-show-only-modified">Show only modified preferences</span>
+                </label>
+            </div>
+
+            <table id="prefs"></table>
+
+            <div class="config-background-wrapper">
+                <button id="show-all" class="ghost-button" data-l10n-id="about-config-show-all">Show All</button>
+                <div class="config-background"></div>
+                <p class="config-help-text" data-l10n-id="about-config-caution-text">Changing these preferences can impact WWW Interpreter performance or security.</p>
+            </div>
+        </template>
+    </body>
+</html>
